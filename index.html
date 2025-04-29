@@ -2,34 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Interactive Water Tank with Top Animation</title>
+  <title>3 Water Tanks</title>
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      height: 100vh;
+      padding: 20px;
       background: linear-gradient(to top, #87ceeb, #e0f7ff);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .tanks-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .tank-container {
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
     }
 
-    .container {
-      display: flex;
-      align-items: flex-end;
-      position: relative;
-    }
-
     .tank {
-      width: 200px;
-      height: 400px;
+      width: 150px;
+      height: 350px;
       border: 4px solid #333;
       background-color: #f8f8f8;
       position: relative;
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
       overflow: hidden;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
     .water {
@@ -50,73 +59,33 @@
       background: rgba(255, 255, 255, 0.2);
       border-radius: 50% 50% 0 0;
       animation: wave 2s infinite ease-in-out;
-      z-index: 2;
     }
 
     @keyframes wave {
-      0%, 100% {
-        transform: translateY(0%);
-      }
-      50% {
-        transform: translateY(-5%);
-      }
+      0%, 100% { transform: translateY(0%); }
+      50% { transform: translateY(-5%); }
     }
 
     .label {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 20px;
+      margin: 10px 0 5px;
+      font-size: 18px;
       font-weight: bold;
-      color: #222;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 2px 6px;
-      border-radius: 5px;
-    }
-
-    .percentages {
-      height: 400px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      margin-left: 12px;
-      font-size: 14px;
-      color: #222;
-      font-weight: bold;
-    }
-
-    .percentages div {
-      height: 1px;
-      position: relative;
-    }
-
-    .percentages div::before {
-      content: "";
-      position: absolute;
-      left: -10px;
-      width: 6px;
-      height: 1px;
-      background: #333;
-      top: 50%;
-      transform: translateY(-50%);
     }
 
     .controls {
-      margin-top: 20px;
+      margin-top: 10px;
       display: flex;
       gap: 10px;
     }
 
     button {
-      padding: 8px 16px;
-      font-size: 16px;
+      padding: 6px 12px;
+      font-size: 14px;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
       background-color: #0077cc;
       color: white;
       cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       transition: background 0.3s;
     }
 
@@ -125,61 +94,83 @@
     }
 
     .level-display {
-      margin-top: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
+      margin-top: 6px;
+      font-size: 14px;
+      color: #222;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="tank">
+  <h1>Water Tank Monitoring</h1>
+
+  <div class="tanks-wrapper">
+    <!-- Tank A -->
+    <div class="tank-container">
       <div class="label">Tank A</div>
-      <div class="water" id="water">
-        <div class="water-surface"></div>
+      <div class="tank">
+        <div class="water" id="waterA">
+          <div class="water-surface"></div>
+        </div>
       </div>
+      <div class="controls">
+        <button onclick="changeWaterLevel('A', 10)">+10%</button>
+        <button onclick="changeWaterLevel('A', -10)">-10%</button>
+      </div>
+      <div class="level-display" id="levelDisplayA">Level: 60%</div>
     </div>
-    <div class="percentages">
-      <div>Full</div>
-      <div>90%</div>
-      <div>80%</div>
-      <div>70%</div>
-      <div>60%</div>
-      <div>50%</div>
-      <div>40%</div>
-      <div>30%</div>
-      <div>20%</div>
-      <div>10%</div>
-      <div>0%</div>
+
+    <!-- Tank B -->
+    <div class="tank-container">
+      <div class="label">Tank B</div>
+      <div class="tank">
+        <div class="water" id="waterB">
+          <div class="water-surface"></div>
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="changeWaterLevel('B', 10)">+10%</button>
+        <button onclick="changeWaterLevel('B', -10)">-10%</button>
+      </div>
+      <div class="level-display" id="levelDisplayB">Level: 60%</div>
+    </div>
+
+    <!-- Tank C -->
+    <div class="tank-container">
+      <div class="label">Tank C</div>
+      <div class="tank">
+        <div class="water" id="waterC">
+          <div class="water-surface"></div>
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="changeWaterLevel('C', 10)">+10%</button>
+        <button onclick="changeWaterLevel('C', -10)">-10%</button>
+      </div>
+      <div class="level-display" id="levelDisplayC">Level: 60%</div>
     </div>
   </div>
-
-  <div class="controls">
-    <button onclick="changeWaterLevel(10)">Fill +10%</button>
-    <button onclick="changeWaterLevel(-10)">Drain -10%</button>
-  </div>
-
-  <div class="level-display" id="levelDisplay">Current Level: 60%</div>
 
   <script>
-    let currentLevel = 60; // starting at 60%
+    let waterLevels = {
+      A: 60,
+      B: 60,
+      C: 60
+    };
 
-    function changeWaterLevel(amount) {
-      currentLevel += amount;
-      if (currentLevel > 100) currentLevel = 100;
-      if (currentLevel < 0) currentLevel = 0;
+    function changeWaterLevel(tank, amount) {
+      waterLevels[tank] += amount;
+      if (waterLevels[tank] > 100) waterLevels[tank] = 100;
+      if (waterLevels[tank] < 0) waterLevels[tank] = 0;
 
-      const water = document.getElementById('water');
-      const display = document.getElementById('levelDisplay');
-
-      water.style.height = currentLevel + '%';
-      display.textContent = 'Current Level: ' + currentLevel + '%';
+      document.getElementById('water' + tank).style.height = waterLevels[tank] + '%';
+      document.getElementById('levelDisplay' + tank).textContent = 'Level: ' + waterLevels[tank] + '%';
     }
 
-    // initialize the height
-    document.getElementById('water').style.height = currentLevel + '%';
+    // Initialize levels
+    ['A', 'B', 'C'].forEach(tank => {
+      document.getElementById('water' + tank).style.height = waterLevels[tank] + '%';
+    });
   </script>
 
 </body>
