@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>3 Water Tanks</title>
+  <title>4 Water Tanks</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
-      background: #a0d8f1; /* Uniform sky background */
+      background: #a0d8f1; /* Sky background */
       text-align: center;
     }
 
@@ -120,9 +120,9 @@
   <h1>Water Tank Monitoring</h1>
 
   <div class="tanks-wrapper">
-    <!-- Tank A -->
+    <!-- Conference -->
     <div class="tank-container">
-      <div class="label">Tank A</div>
+      <div class="label">Conference</div>
       <div class="tank-section">
         <div class="percentage">
           <div>100%</div>
@@ -133,90 +133,10 @@
           <div>0%</div>
         </div>
         <div class="tank">
-          <div class="water" id="waterA">
+          <div class="water" id="waterConference">
             <div class="water-surface"></div>
           </div>
         </div>
       </div>
       <div class="controls">
-        <button onclick="changeWaterLevel('A', 10)">+10%</button>
-        <button onclick="changeWaterLevel('A', -10)">-10%</button>
-      </div>
-      <div class="level-display" id="levelDisplayA">Level: 60%</div>
-    </div>
-
-    <!-- Tank B -->
-    <div class="tank-container">
-      <div class="label">Tank B</div>
-      <div class="tank-section">
-        <div class="percentage">
-          <div>100%</div>
-          <div>80%</div>
-          <div>60%</div>
-          <div>40%</div>
-          <div>20%</div>
-          <div>0%</div>
-        </div>
-        <div class="tank">
-          <div class="water" id="waterB">
-            <div class="water-surface"></div>
-          </div>
-        </div>
-      </div>
-      <div class="controls">
-        <button onclick="changeWaterLevel('B', 10)">+10%</button>
-        <button onclick="changeWaterLevel('B', -10)">-10%</button>
-      </div>
-      <div class="level-display" id="levelDisplayB">Level: 60%</div>
-    </div>
-
-    <!-- Tank C -->
-    <div class="tank-container">
-      <div class="label">Tank C</div>
-      <div class="tank-section">
-        <div class="percentage">
-          <div>100%</div>
-          <div>80%</div>
-          <div>60%</div>
-          <div>40%</div>
-          <div>20%</div>
-          <div>0%</div>
-        </div>
-        <div class="tank">
-          <div class="water" id="waterC">
-            <div class="water-surface"></div>
-          </div>
-        </div>
-      </div>
-      <div class="controls">
-        <button onclick="changeWaterLevel('C', 10)">+10%</button>
-        <button onclick="changeWaterLevel('C', -10)">-10%</button>
-      </div>
-      <div class="level-display" id="levelDisplayC">Level: 60%</div>
-    </div>
-  </div>
-
-  <script>
-    let waterLevels = {
-      A: 60,
-      B: 60,
-      C: 60
-    };
-
-    function changeWaterLevel(tank, amount) {
-      waterLevels[tank] += amount;
-      if (waterLevels[tank] > 100) waterLevels[tank] = 100;
-      if (waterLevels[tank] < 0) waterLevels[tank] = 0;
-
-      document.getElementById('water' + tank).style.height = waterLevels[tank] + '%';
-      document.getElementById('levelDisplay' + tank).textContent = 'Level: ' + waterLevels[tank] + '%';
-    }
-
-    // Initialize all levels on load
-    ['A', 'B', 'C'].forEach(tank => {
-      document.getElementById('water' + tank).style.height = waterLevels[tank] + '%';
-    });
-  </script>
-
-</body>
-</html>
+        <button onclick="changeWaterLevel('Conference'
