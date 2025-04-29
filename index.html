@@ -8,20 +8,19 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
-      background: linear-gradient(to top, #87ceeb, #e0f7ff);
+      background: #a0d8f1; /* Uniform sky background */
       text-align: center;
     }
 
     h1 {
-      margin-bottom: 20px;
       color: #333;
+      margin-bottom: 30px;
     }
 
     .tanks-wrapper {
       display: flex;
       justify-content: center;
       gap: 40px;
-      margin-bottom: 40px;
       flex-wrap: wrap;
     }
 
@@ -29,13 +28,36 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      position: relative;
+    }
+
+    .label {
+      margin: 10px 0 5px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .tank-section {
+      display: flex;
+      position: relative;
+    }
+
+    .percentage {
+      position: absolute;
+      left: -30px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #333;
     }
 
     .tank {
       width: 150px;
       height: 350px;
       border: 4px solid #333;
-      background-color: #f8f8f8;
+      background-color: #f0f0f0;
       position: relative;
       overflow: hidden;
       box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
@@ -62,14 +84,8 @@
     }
 
     @keyframes wave {
-      0%, 100% { transform: translateY(0%); }
+      0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-5%); }
-    }
-
-    .label {
-      margin: 10px 0 5px;
-      font-size: 18px;
-      font-weight: bold;
     }
 
     .controls {
@@ -86,7 +102,6 @@
       background-color: #0077cc;
       color: white;
       cursor: pointer;
-      transition: background 0.3s;
     }
 
     button:hover {
@@ -108,9 +123,19 @@
     <!-- Tank A -->
     <div class="tank-container">
       <div class="label">Tank A</div>
-      <div class="tank">
-        <div class="water" id="waterA">
-          <div class="water-surface"></div>
+      <div class="tank-section">
+        <div class="percentage">
+          <div>100%</div>
+          <div>80%</div>
+          <div>60%</div>
+          <div>40%</div>
+          <div>20%</div>
+          <div>0%</div>
+        </div>
+        <div class="tank">
+          <div class="water" id="waterA">
+            <div class="water-surface"></div>
+          </div>
         </div>
       </div>
       <div class="controls">
@@ -123,9 +148,19 @@
     <!-- Tank B -->
     <div class="tank-container">
       <div class="label">Tank B</div>
-      <div class="tank">
-        <div class="water" id="waterB">
-          <div class="water-surface"></div>
+      <div class="tank-section">
+        <div class="percentage">
+          <div>100%</div>
+          <div>80%</div>
+          <div>60%</div>
+          <div>40%</div>
+          <div>20%</div>
+          <div>0%</div>
+        </div>
+        <div class="tank">
+          <div class="water" id="waterB">
+            <div class="water-surface"></div>
+          </div>
         </div>
       </div>
       <div class="controls">
@@ -138,9 +173,19 @@
     <!-- Tank C -->
     <div class="tank-container">
       <div class="label">Tank C</div>
-      <div class="tank">
-        <div class="water" id="waterC">
-          <div class="water-surface"></div>
+      <div class="tank-section">
+        <div class="percentage">
+          <div>100%</div>
+          <div>80%</div>
+          <div>60%</div>
+          <div>40%</div>
+          <div>20%</div>
+          <div>0%</div>
+        </div>
+        <div class="tank">
+          <div class="water" id="waterC">
+            <div class="water-surface"></div>
+          </div>
         </div>
       </div>
       <div class="controls">
@@ -167,7 +212,7 @@
       document.getElementById('levelDisplay' + tank).textContent = 'Level: ' + waterLevels[tank] + '%';
     }
 
-    // Initialize levels
+    // Initialize all levels on load
     ['A', 'B', 'C'].forEach(tank => {
       document.getElementById('water' + tank).style.height = waterLevels[tank] + '%';
     });
