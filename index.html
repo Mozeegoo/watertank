@@ -139,4 +139,110 @@
         </div>
       </div>
       <div class="controls">
-        <button onclick="changeWaterLevel('Conference'
+        <button onclick="changeWaterLevel('Conference', 10)">+10%</button>
+        <button onclick="changeWaterLevel('Conference', -10)">-10%</button>
+      </div>
+      <div class="level-display" id="levelDisplayConference">Level: 60%</div>
+    </div>
+
+    <!-- Roof Top -->
+    <div class="tank-container">
+      <div class="label">Roof Top</div>
+      <div class="tank-section">
+        <div class="percentage">
+          <div>100%</div>
+          <div>80%</div>
+          <div>60%</div>
+          <div>40%</div>
+          <div>20%</div>
+          <div>0%</div>
+        </div>
+        <div class="tank">
+          <div class="water" id="waterRoofTop">
+            <div class="water-surface"></div>
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="changeWaterLevel('RoofTop', 10)">+10%</button>
+        <button onclick="changeWaterLevel('RoofTop', -10)">-10%</button>
+      </div>
+      <div class="level-display" id="levelDisplayRoofTop">Level: 60%</div>
+    </div>
+
+    <!-- GM House -->
+    <div class="tank-container">
+      <div class="label">GM House</div>
+      <div class="tank-section">
+        <div class="percentage">
+          <div>100%</div>
+          <div>80%</div>
+          <div>60%</div>
+          <div>40%</div>
+          <div>20%</div>
+          <div>0%</div>
+        </div>
+        <div class="tank">
+          <div class="water" id="waterGMHouse">
+            <div class="water-surface"></div>
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="changeWaterLevel('GMHouse', 10)">+10%</button>
+        <button onclick="changeWaterLevel('GMHouse', -10)">-10%</button>
+      </div>
+      <div class="level-display" id="levelDisplayGMHouse">Level: 60%</div>
+    </div>
+
+    <!-- Mike Storage -->
+    <div class="tank-container">
+      <div class="label">Mike Storage</div>
+      <div class="tank-section">
+        <div class="percentage">
+          <div>100%</div>
+          <div>80%</div>
+          <div>60%</div>
+          <div>40%</div>
+          <div>20%</div>
+          <div>0%</div>
+        </div>
+        <div class="tank">
+          <div class="water" id="waterMikeStorage">
+            <div class="water-surface"></div>
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="changeWaterLevel('MikeStorage', 10)">+10%</button>
+        <button onclick="changeWaterLevel('MikeStorage', -10)">-10%</button>
+      </div>
+      <div class="level-display" id="levelDisplayMikeStorage">Level: 60%</div>
+    </div>
+  </div>
+
+  <script>
+    let waterLevels = {
+      Conference: 60,
+      RoofTop: 60,
+      GMHouse: 60,
+      MikeStorage: 60
+    };
+
+    function changeWaterLevel(tank, amount) {
+      waterLevels[tank] += amount;
+      if (waterLevels[tank] > 100) waterLevels[tank] = 100;
+      if (waterLevels[tank] < 0) waterLevels[tank] = 0;
+
+      document.getElementById('water' + tank).style.height = waterLevels[tank] + '%';
+      document.getElementById('levelDisplay' + tank).textContent = 'Level: ' + waterLevels[tank] + '%';
+    }
+
+    // Initialize levels
+    Object.keys(waterLevels).forEach(tank => {
+      document.getElementById('water' + tank).style.height = waterLevels[tank] + '%';
+    });
+  </script>
+
+</body>
+</html>
